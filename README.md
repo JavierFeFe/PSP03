@@ -111,6 +111,7 @@ class Cliente {
 ![image](https://user-images.githubusercontent.com/44543081/54043914-02598380-41ce-11e9-9d79-a1054bf6c77f.png)  
 
 * Actividad 3.2. El objetivo del ejercicio es crear una aplicación cliente/servidor que permita el envío de ficheros al cliente. Para ello, el cliente se conectará al servidor por el puerto 1500 y le solicitará el nombre de un fichero del servidor. Si el fichero existe, el servidor, le enviará el fichero al cliente y éste lo mostrará por pantalla. Si el fichero no existe, el servidor le enviará al cliente un mensaje de error. Una vez que el cliente ha mostrado el fichero se finalizará la conexión.
+**En este caso decidí usar el protocolo TCP/IP ya que considero que prima la integridad sobre la velocidad**
 ```Java
 package psp03_2;
 
@@ -155,4 +156,50 @@ class Servidor {
 
 }
 ```
+*Creo la clase Servidor*
+```Java
+package psp03_2;
+
+import java.io.*;
+import java.net.*;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+class Cliente {
+    private final String URL = "127.0.0.1"; //DEFINO LA URL DEL SERVIDOR
+    private final int PUERTO = 1500; //DEFINO EL PUERTO DEL SERVIDOR
+    public static void main(String[] arg) {
+        Cliente cliente = new Cliente();
+    }
+    public Cliente() {
+        try (Socket sCliente = new Socket(URL, PUERTO)) {
+            //CREO LOS SOCKETS DE ENTRADA Y SALIDA IGUAL QUE EN EL SERVIDOR
+            InputStream in = sCliente.getInputStream();
+            DataInputStream flujo_entrada = new DataInputStream(in);
+            OutputStream out = sCliente.getOutputStream();
+            DataOutputStream flujo_salida = new DataOutputStream(out);
+            String entrada = flujo_entrada.readUTF();
+            if (entrada.equals("Conectado")){
+                Scanner sc = new Scanner(System.in);
+                System.out.print("Introduce el nombre de un fichero: ");
+                String texto = sc.nextLine();
+                flujo_salida.writeUTF(texto);
+                while (true){
+                    try{
+                        System.out.println(flujo_entrada.readUTF());
+                    }catch (EOFException e) {
+                        break;
+                    }
+                }
+            }
+            sCliente.close(); //CIERRO EL SOCKET
+        }  catch (IOException ex) {
+            Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+}
+```
 *Creo la clase Cliente*
+

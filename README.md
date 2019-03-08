@@ -201,5 +201,7 @@ class Cliente {
 
 }
 ```
-*Creo la clase Cliente*
+*Creo la clase Cliente*  
+![image](https://user-images.githubusercontent.com/44543081/54052827-c4685980-41e5-11e9-9801-5e5fc95cf747.png)  
+![image](https://user-images.githubusercontent.com/44543081/54052876-dc3fdd80-41e5-11e9-8b14-09a171c6fc07.png)  
 

@@ -17,7 +17,7 @@ class Servidor {
     }
     
     public Servidor() {
-        int numero = rmd.nextInt(100) + 1; //GENERO UN NÚMERO ALEATORIO ENTRE 1 Y 100
+        int numero = rmd.nextInt(100); //GENERO UN NÚMERO ALEATORIO ENTRE 1 Y 100
         int numeroIntroducido = -1; //ESTABLEZCO UN VALOR INICIAL PARA EL NÚMERO INTRODUCIDO
         System.out.println("Número secreto: " + numero); //MUESTRO EN LA CONSOLA DEL SERVIDOR EL NÚMERO GENERADO
         try {

@@ -107,5 +107,7 @@ class Cliente {
 
 ```
 *Creo la clase cliente*
+![screenshot_18](https://user-images.githubusercontent.com/44543081/54043861-e48c1e80-41cd-11e9-9943-8404bd3fc407.png)  
+![image](https://user-images.githubusercontent.com/44543081/54043914-02598380-41ce-11e9-9d79-a1054bf6c77f.png)  
 
 * Actividad 3.2. El objetivo del ejercicio es crear una aplicación cliente/servidor que permita el envío de ficheros al cliente. Para ello, el cliente se conectará al servidor por el puerto 1500 y le solicitará el nombre de un fichero del servidor. Si el fichero existe, el servidor, le enviará el fichero al cliente y éste lo mostrará por pantalla. Si el fichero no existe, el servidor le enviará al cliente un mensaje de error. Una vez que el cliente ha mostrado el fichero se finalizará la conexión.
